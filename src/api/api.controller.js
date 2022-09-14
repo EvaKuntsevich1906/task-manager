@@ -1,13 +1,14 @@
 const express = require("express");;
 const router = express.Router();
 const {
-    createUser,
     getAllTask,
+    createUser,
+    createTask,
     updateTaskByID,
     deleteTaskByID
-} = require("./api.service/")
+} = require("./api.service")
 
-router.post("/", async (req, res) => {
+router.post("/users/create", async (req, res) => {
     try {
         const {
             fullName,
@@ -20,6 +21,19 @@ router.post("/", async (req, res) => {
         console.log(err.message);
     }
 });
+
+router.post("/", async (req, res) => {
+    try {
+        const {
+            task
+        } = req.body
+        const createdTask = await createTask(task);
+        res.status(200).send(createdTask);
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
 
 router.get("/", async (req, res) => {
     try {
@@ -58,6 +72,5 @@ router.delete("/:id", async (req, res) => {
     }
 
 });
-
 
 module.exports = router
