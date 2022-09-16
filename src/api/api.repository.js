@@ -23,6 +23,18 @@ const createUserDB = async (fullName, email, password) => {
     }
 }
 
+ const authUserDB = async (email, password) => {
+    const client = await pool.connect();
+    try {
+        await client.query('BEGIN');
+        const sql = ``;
+
+        return
+    } catch (err) {
+        console.log(`error in authUserDB`);
+        await client.query(`ROLLBACK`);
+    }
+ }
 const createTaskDB = async (task) => {
     const client = await pool.connect();
     try {

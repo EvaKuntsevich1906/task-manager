@@ -2,6 +2,7 @@ const {
     getAllTaskDB,
     createUserDB,
     createTaskDB,
+    authUserDB,
     updateTaskByIDDB,
     deleteTaskByIDDB
 } = require("./api.repository");
@@ -14,7 +15,10 @@ const  createTask = async (task) => {
     const createdTaskDB = await createTaskDB(task)
     return createdTaskDB
 }
-
+const authUser = async (email, password) => {
+    const authedUserDB = await authUsersDB(email, password)
+    return authedUserDB
+}
 const getAllTask = async () => {
     const gottTaskDB = await getAllTaskDB()
     return gottTaskDB
@@ -33,6 +37,7 @@ module.exports = {
     createUser,
     getAllTask,
     createTask,
+    authUser,
     updateTaskByID,
     deleteTaskByID
 }

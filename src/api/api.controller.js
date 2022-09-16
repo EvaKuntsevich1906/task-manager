@@ -4,6 +4,7 @@ const {
     getAllTask,
     createUser,
     createTask,
+    authUser,
     updateTaskByID,
     deleteTaskByID
 } = require("./api.service")
@@ -29,6 +30,19 @@ router.post("/tasks/create", async (req, res) => {
         } = req.body
         const createdTask = await createTask(task);
         res.status(200).send(createdTask);
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+
+router.post("/users/auth", async (req,res) => {
+    try {
+        const {
+            email,
+            password
+        } = req.body;
+    const authedUsers = await authUser(email,password);
+    res.status(200).send(authedUsers)
     } catch (err) {
         console.log(err.message);
     }
