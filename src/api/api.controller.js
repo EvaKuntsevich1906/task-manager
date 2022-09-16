@@ -8,7 +8,7 @@ const {
     deleteTaskByID
 } = require("./api.service")
 
-router.post("/users/create", async (req, res) => {
+router.post("/users/сreate", async (req, res) => {
     try {
         const {
             fullName,
@@ -22,7 +22,7 @@ router.post("/users/create", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/tasks/create", async (req, res) => {
     try {
         const {
             task
