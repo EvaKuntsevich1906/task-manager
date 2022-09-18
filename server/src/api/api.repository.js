@@ -108,6 +108,7 @@ module.exports = {
     getAllTaskDB,
     createUserDB,
     createTaskDB,
+    authUserDB,
     updateTaskByIDDB,
     deleteTaskByIDDB
 };
