@@ -12,4 +12,4 @@ registrBtn.addEventListener("click", () => {
 
 loginBtn.addEventListener("click", () => {
     window.location.href = 'file:///C:/Users/HP/Desktop/task-manager/client/client%20registr/index.html';
-})
+});
