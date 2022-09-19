@@ -27,17 +27,16 @@ const authUserDB = async (email, password) => {
     const client = await pool.connect();
     try {
         await client.query('BEGIN');
-        const sql = `SELECT * from users WHERE email = $1, password = $2`;
-        console.log(email,password);
+        const sql = `select * from users where email = $1 and password = $2`;
         const sqlRequest = (await client.query(sql, [email,password])).rows;
-        if (sqlRequest.length === 0) throw new Error("Некорректный ввод");
-
+        if (sqlRequest.length === 0) throw new Error("Неверный логин или пароль");
         await client.query('COMMIT');
 
         return sqlRequest;
     } catch (err) {
         console.log(`error in authUserDB`);
         await client.query(`ROLLBACK`);
+        return err.message
     }
 }
 const createTaskDB = async (task) => {

@@ -43,7 +43,6 @@ router.post("/users/auth", async (req,res) => {
         } = req.body;
         console.log(email, password);
     const authedUsers = await authUser(email,password);
-    console.log(authedUsers);
     res.status(200).send(authedUsers)
     } catch (err) {
         console.log(err.message);
