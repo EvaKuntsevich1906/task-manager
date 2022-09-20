@@ -17,9 +17,10 @@ router.post("/users/сreate", async (req, res) => {
             password
         } = req.body;
         const createdUser = await createUser(fullName, email, password)
-        res.status(200).send(createdUser);
+        res.status(200).send({});
     } catch (err) {
         console.log(err.message);
+        res.status(500).send(err.message)
     }
 });
 
