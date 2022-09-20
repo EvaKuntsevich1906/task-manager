@@ -10,12 +10,12 @@ const checkName = (fullName) => {
     if (fullName.length === 0) throw new Error(`Вы не ввели имя`);
     return true
 }
-1
-// const checkEmail = (email) => {
-//     if (email.length === 0) throw new Error(`Вы не ввели электронную почту`);
-//     if (!/^[a-z0-9.-_]+@[a-z]+\.[a-z]{2,6}$/g.test(email)) throw new Error(`Некорректно введен адрес электронной почты`)
-//     return true
-// }
+
+const checkEmail = (email) => {
+    if (email.length === 0) throw new Error(`Вы не ввели электронную почту`);
+    if (!/^[a-z0-9.-_]+@[a-z]+\.[a-z]{2,6}$/g.test(email)) throw new Error(`Некорректно введен адрес электронной почты`)
+    return true
+}
 
 const checkPassword = (password, dbpassword) => {
     if (password.length <= 7 && dbpassword.length <= 7) throw new Error(`Пароль содержит недостаточное количество символов`);
@@ -29,9 +29,9 @@ create.addEventListener(`click`, async () => {
         const email = document.querySelector(`.email`).value;
         const password = document.querySelector(`.password`).value;
         const dbpassword = document.querySelector(`.dbpassword`).value;
-        // if (checkName(fullName) &&
-        //     checkEmail(email) &&
-        //     checkPassword(password, dbpassword)) {
+        if (checkName(fullName) &&
+            checkEmail(email) &&
+            checkPassword(password, dbpassword)) {
         let object = {
             fullName: fullName,
             email: email,
@@ -48,7 +48,7 @@ create.addEventListener(`click`, async () => {
         const jsonresponse = await response.json()
         alert(`Вы успешно зарегестрированы в системе!`);
         return jsonresponse
-        // }
+    }
     } catch (err) {
         alert(err.message)
     }
