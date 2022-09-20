@@ -9,7 +9,7 @@ const {
     deleteTaskByID
 } = require("./api.service")
 
-router.post("/users/сreate", async (req, res) => {
+router.post("/users/registr", async (req, res) => {
     try {
         const {
             fullName,
@@ -17,7 +17,7 @@ router.post("/users/сreate", async (req, res) => {
             password
         } = req.body;
         const createdUser = await createUser(fullName, email, password)
-        res.status(200).send({});
+        res.status(200).send(createdUser);
     } catch (err) {
         console.log(err.message);
         res.status(500).send(err.message)
@@ -36,15 +36,15 @@ router.post("/tasks/create", async (req, res) => {
     }
 });
 
-router.post("/users/auth", async (req,res) => {
+router.post("/users/auth", async (req, res) => {
     try {
         const {
             email,
             password
         } = req.body;
         console.log(email, password);
-    const authedUsers = await authUser(email,password);
-    res.status(200).send(authedUsers)
+        const authedUsers = await authUser(email, password);
+        res.status(200).send(authedUsers)
     } catch (err) {
         console.log(err.message);
     }

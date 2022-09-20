@@ -11,7 +11,7 @@ const createUser = async (name, email, password) => {
     const createdUserDB = await createUserDB(name, email, password)
     return createdUserDB
 }
-const  createTask = async (task) => {
+const createTask = async (task) => {
     const createdTaskDB = await createTaskDB(task)
     return createdTaskDB
 }
@@ -24,8 +24,8 @@ const getAllTask = async () => {
     return gottTaskDB
 }
 
-const updateTaskByID = async(id, task) => {
-    const updatedTaskByIDDB =  await updateTaskByIDDB(id,task)
+const updateTaskByID = async (id, task) => {
+    const updatedTaskByIDDB = await updateTaskByIDDB(id, task)
     return updatedTaskByIDDB
 }
 

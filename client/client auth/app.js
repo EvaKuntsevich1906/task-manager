@@ -13,16 +13,19 @@ cont.addEventListener(`click`, async () => {
         //     password: password
         // }
         const response = await fetch(`http://localhost:3000/api/users/auth`, {
-            // mode: 'no-cors',
+
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ email: email, password: password })
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
         })
-        console.log(response);
-        const jsonresponse = await response.json()
-       alert(jsonresponse)
+        const jsonresponse = await response.json();
+        console.log(`=`);
+        window.location.href = 'file:///C:/Users/HP/Desktop/task-manager/client/profile/index.html';
     } catch (err) {
         alert(err.message)
     }

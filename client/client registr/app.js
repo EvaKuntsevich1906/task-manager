@@ -24,31 +24,32 @@ const checkPassword = (password, dbpassword) => {
 }
 
 create.addEventListener(`click`, async () => {
-            try {
-                const fullName = document.querySelector(`.fullName`);
-                const email = document.querySelector(`.email`);
-                const password = document.querySelector(`.password`);
-                const dbpassword = document.querySelector(`.dbpassword`);
-                // if (checkName(fullName) &&
-                //     checkEmail(email) &&
-                //     checkPassword(password, dbpassword)) {
-                    let object = {
-                        fullName: fullName,
-                        email: email,
-                        password: password
-                    }
-                    const response = await fetch(`http://localhost:3000/users/сreate`, {
-                        method: 'POST',
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(object)
-                    });
-                    const jsonresponse = await response.json()
-                    alert(`Вы успешно зарегестрированы в системе!`);
-                    return jsonresponse
-                // }
-                } catch (err) {
-                    alert(err.message)
-                }
-            });
+    try {
+        const fullName = document.querySelector(`.fullName`).value;
+        const email = document.querySelector(`.email`).value;
+        const password = document.querySelector(`.password`).value;
+        const dbpassword = document.querySelector(`.dbpassword`).value;
+        // if (checkName(fullName) &&
+        //     checkEmail(email) &&
+        //     checkPassword(password, dbpassword)) {
+        let object = {
+            fullName: fullName,
+            email: email,
+            password: password
+        }
+        console.log(object);
+        const response = await fetch(`http://localhost:3000/api/users/registr`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(object)
+        });
+        const jsonresponse = await response.json()
+        alert(`Вы успешно зарегестрированы в системе!`);
+        return jsonresponse
+        // }
+    } catch (err) {
+        alert(err.message)
+    }
+});
