@@ -8,10 +8,10 @@ cont.addEventListener(`click`, async () => {
         const email = document.querySelector(`.email`).value.trim();
         const password = document.querySelector(`.password`).value.trim();
 
-        // let object = {
-        //     email: email,
-        //     password: password
-        // }
+        let object = {
+            email: email,
+            password: password
+        }
         const response = await fetch(`http://localhost:3000/api/users/auth`, {
 
             method: 'POST',
@@ -24,7 +24,6 @@ cont.addEventListener(`click`, async () => {
             })
         })
         const jsonresponse = await response.json();
-        console.log(`=`);
         window.location.href = 'file:///C:/Users/HP/Desktop/task-manager/client/profile/index.html';
     } catch (err) {
         alert(err.message)

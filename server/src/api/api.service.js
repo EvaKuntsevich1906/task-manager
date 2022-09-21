@@ -11,8 +11,8 @@ const createUser = async (name, email, password) => {
     const createdUserDB = await createUserDB(name, email, password)
     return createdUserDB
 }
-const createTask = async (task) => {
-    const createdTaskDB = await createTaskDB(task)
+const createTask = async (task, user_id) => {
+    const createdTaskDB = await createTaskDB(task, user_id)
     return createdTaskDB
 }
 const authUser = async (email, password) => {

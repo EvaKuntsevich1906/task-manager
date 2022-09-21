@@ -39,21 +39,22 @@ const authUserDB = async (email, password) => {
         return err.message
     }
 }
-const createTaskDB = async (task) => {
+const createTaskDB = async (task,user_id) => {
+    // console.log(task);
     const client = await pool.connect();
     try {
         await client.query(`BEGIN`);
         const sql = `INSERT INTO tasks
-        (task) VALUES ($1)
+        (task, user_id) VALUES ($1, $2)
         RETURNING tasks.*`
-        const sqlRequest = (await client.query(sql, [task])).rows;
+        const sqlRequest = (await client.query(sql, [task, user_id])).rows;
         if (sqlRequest.length === 0) throw new Error("Некорректный ввод");
 
         await client.query('COMMIT');
 
         return sqlRequest;
     } catch (err) {
-        console.log(`error in usercreateDB ${err}`);
+        console.log(`error in createTaskDB ${err}`);
         await client.query('ROLLBACK')
     }
 };

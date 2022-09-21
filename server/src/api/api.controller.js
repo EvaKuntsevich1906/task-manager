@@ -27,9 +27,11 @@ router.post("/users/registr", async (req, res) => {
 router.post("/tasks/create", async (req, res) => {
     try {
         const {
-            task
-        } = req.body
-        const createdTask = await createTask(task);
+            task,
+            user_id
+        } = req.body;
+        // console.log(task);
+        const createdTask = await createTask(task, user_id);
         res.status(200).send(createdTask);
     } catch (err) {
         console.log(err.message);
