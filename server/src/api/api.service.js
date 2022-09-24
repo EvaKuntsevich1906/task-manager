@@ -24,13 +24,13 @@ const getAllTask = async () => {
     return gottTaskDB
 }
 
-const updateTaskByID = async (id, task) => {
-    const updatedTaskByIDDB = await updateTaskByIDDB(id, task)
+const updateTaskByID = async (id, task, user_id) => {
+    const updatedTaskByIDDB = await updateTaskByIDDB(id, task, user_id)
     return updatedTaskByIDDB
 }
 
-const deleteTaskByID = async (id) => {
-    const deletedTaskByIDDB = await deleteTaskByIDDB(id)
+const deleteTaskByID = async (id, user_id) => {
+    const deletedTaskByIDDB = await deleteTaskByIDDB(id, user_id)
     return deletedTaskByIDDB
 }
 module.exports = {

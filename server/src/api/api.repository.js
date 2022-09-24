@@ -59,7 +59,6 @@ const createTaskDB = async (task,user_id) => {
     }
 };
 
-
 const getAllTaskDB = async () => {
     const client = await pool.connect();
     try {
