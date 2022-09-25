@@ -8,8 +8,10 @@ const {
 } = require("./api.repository");
 
 const createUser = async (name, email, password) => {
+    console.log(name, email, password);
     const createdUserDB = await createUserDB(name, email, password)
     return createdUserDB
+    
 }
 const createTask = async (task, user_id) => {
     const createdTaskDB = await createTaskDB(task, user_id)
