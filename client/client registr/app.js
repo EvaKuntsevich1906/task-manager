@@ -6,22 +6,22 @@ signInBtn.addEventListener(`click`, () => {
 });
 
 
-const checkName = (fullName) => {
-    if (fullName.length === 0) throw new Error(`Вы не ввели имя`);
-    return true
-}
+// const checkName = (fullName) => {
+//     if (fullName.length === 0) throw new Error(`Вы не ввели имя`);
+//     return true
+// }
 
-const checkEmail = (email) => {
-    if (email.length === 0) throw new Error(`Вы не ввели электронную почту`);
-    if (!/^[a-z0-9.-_]+@[a-z]+\.[a-z]{2,6}$/g.test(email)) throw new Error(`Некорректно введен адрес электронной почты`)
-    return true
-}
+// const checkEmail = (email) => {
+//     if (email.length === 0) throw new Error(`Вы не ввели электронную почту`);
+//     if (!/^[a-z0-9.-_]+@[a-z]+\.[a-z]{2,6}$/g.test(email)) throw new Error(`Некорректно введен адрес электронной почты`)
+//     return true
+// }
 
-const checkPassword = (password, dbpassword) => {
-    if (password.length <= 7 && dbpassword.length <= 7) throw new Error(`Пароль содержит недостаточное количество символов`);
-    if (password !== dbpassword) throw new Error(`Введенные пароли не совпадают`);
-    return true
-}
+// const checkPassword = (password, dbpassword) => {
+//     if (password.length <= 7 && dbpassword.length <= 7) throw new Error(`Пароль содержит недостаточное количество символов`);
+//     if (password !== dbpassword) throw new Error(`Введенные пароли не совпадают`);
+//     return true
+// }
 
 create.addEventListener(`click`, async () => {
     try {

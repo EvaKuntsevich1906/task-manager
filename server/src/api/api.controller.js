@@ -62,12 +62,10 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("tasks/update/", async (req, res) => {
+router.put("/tasks/update", async (req, res) => {
     try {
         const {
-            id
-        } = req.params;
-        const {
+            id,
             task
         } = req.body;
         const updadedTaskByID = await updateTaskByID(id, task);

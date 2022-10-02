@@ -40,7 +40,6 @@ const authUserDB = async (email, password) => {
     }
 }
 const createTaskDB = async (task,user_id) => {
-    // console.log(task);
     const client = await pool.connect();
     try {
         await client.query(`BEGIN`);
@@ -82,7 +81,7 @@ const updateTaskByIDDB = async (id, task) => {
         UPDATE tasks SET task = $2 
         WHERE id = $1
         RETURNING tasks.* `
-        const sqlRequest = (await client.query(sql, [id, task]));
+        const sqlRequest = (await client.query(sql, [id, task])).rows;
         if (sqlRequest === 0) throw new Error("Not Found");
         await client.query('COMMIT');
         return sqlRequest
